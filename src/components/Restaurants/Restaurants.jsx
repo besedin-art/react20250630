@@ -2,20 +2,17 @@ import { Restaurant } from "../Restaurant/Restaurant";
 import { useState } from "react";
 
 export const Restaurants = ({ restaurants }) => {
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(restaurants[0].id);
 
-  const selectRestaurant = (idx) => {
-    if (current === idx) return;
-    setCurrent(idx);
-  }
+  const activeRestaurant = restaurants.find(restaurant => restaurant.id === current);
 
   return (
     <>
       <div>
-        {restaurants.map(({ id, name }, idx) => <button key={id} onClick={() => selectRestaurant(idx)}>{name}</button>)}
+        {restaurants.map(({ id, name }) => <button key={id} disabled={id === current} onClick={() => setCurrent(id)}>{name}</button>)}
       </div>
       <div>
-        {<Restaurant restaurant={restaurants[current]} />}
+        {<Restaurant restaurant={activeRestaurant} />}
       </div>
     </>
   );
