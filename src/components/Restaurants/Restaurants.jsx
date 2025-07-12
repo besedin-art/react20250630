@@ -12,8 +12,9 @@ export const Restaurants = ({ restaurants }) => {
         {restaurants.map(({ id, name }) => <button key={id} disabled={id === current} onClick={() => setCurrent(id)}>{name}</button>)}
       </div>
       <div>
-        {<Restaurant restaurant={activeRestaurant} />}
+        {<Restaurant restaurant={activeRestaurant} key={activeRestaurant.id} />}
       </div>
+      <div style={{ height: "1000px" }}></div>
     </>
   );
 }
