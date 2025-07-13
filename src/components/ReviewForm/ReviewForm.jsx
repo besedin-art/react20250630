@@ -40,7 +40,7 @@ export const ReviewForm = () => {
         }} />
       </div>
       <div>
-        <input type="text" placeholder="Текст" value={text} onChange={e => {
+        <textarea placeholder="Текст" value={text} onChange={e => {
           dispatch({ type: SET_TEXT_ACTION, payload: e.target.value })
         }} />
       </div>
