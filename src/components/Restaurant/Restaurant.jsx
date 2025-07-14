@@ -1,4 +1,5 @@
 import { DishListItem } from "../Dish/DishListItem";
+import { ReviewForm } from "../ReviewForm/ReviewForm";
 
 export const Restaurant = ({ restaurant }) => {
   return (
@@ -23,6 +24,10 @@ export const Restaurant = ({ restaurant }) => {
         !restaurant.reviews.length &&
         <div>Отзывов еще нет</div>
       }
+
+      <h3>Оставить отзыв</h3>
+      <ReviewForm />
+
     </div>
   );
 }
