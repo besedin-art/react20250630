@@ -37,7 +37,7 @@ export const ScrollProgressBar = () => {
 
   return (
     <div style={wrapStyle}>
-      <div style={{ ...innerStyle, width: percent + '%' }}></div>
+      <div style={{ ...innerStyle, width: percent + '%' }} />
     </div>
   );
 }

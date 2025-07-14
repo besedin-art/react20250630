@@ -33,7 +33,7 @@ export const ReviewForm = () => {
   const { name, text, rating } = form;
 
   return (
-    <form>
+    <form onSubmit={e => {e.preventDefault();}}>
       <div>
         <input type="text" placeholder="Имя" value={name} onChange={e => {
           dispatch({ type: SET_NAME_ACTION, payload: e.target.value })
