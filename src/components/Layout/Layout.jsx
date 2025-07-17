@@ -1,11 +1,11 @@
-import { Fragment } from "react";
+import styles from './Layout.module.css';
 
 export const Layout = ({ children }) => {
   return (
     <>
-      <header style={{ backgroundColor: '#eee', padding: '20px' }}>header</header>
+      <header className={styles.header}>header</header>
       <main>{children}</main>
-      <footer style={{ backgroundColor: '#eee', padding: '20px' }}>footer</footer>
+      <footer className={styles.footer}>footer</footer>
     </>
   );
 }
