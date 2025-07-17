@@ -1,5 +1,6 @@
 import { DishListItem } from "../Dish/DishListItem";
 import { ReviewForm } from "../ReviewForm/ReviewForm";
+import { ReviewListItem } from "../Review/Review";
 
 export const Restaurant = ({ restaurant }) => {
   return (
@@ -15,9 +16,7 @@ export const Restaurant = ({ restaurant }) => {
       {
         !!restaurant.reviews.length &&
         restaurant.reviews.map(review => (
-          <li key={review.id}>
-            {review.user}: {review.text}
-          </li>
+          <ReviewListItem key={review.id} review={review} />
         ))
       }
       {

@@ -1,57 +1,25 @@
-import { useReducer } from "react";
 import { Counter } from "../Counter/Counter";
+import { Button } from "../Button/Button";
+import { useForm } from "./use-form";
 
-const initialState = {
-  name: '',
-  text: '',
-  rating: 0
-}
-
-const SET_NAME_ACTION = "setName";
-const SET_TEXT_ACTION = "setText";
-const SET_RATING_ACTION = "setRating";
-const CLEAR_ACTION = "clear";
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case SET_NAME_ACTION:
-      return { ...initialState, name: action.payload }
-    case SET_TEXT_ACTION:
-      return { ...state, text: action.payload }
-    case SET_RATING_ACTION:
-      return { ...state, rating: action.payload }
-    case CLEAR_ACTION:
-      return initialState
-    default:
-      return state;
-  }
-}
 
 export const ReviewForm = () => {
-  const [form, dispatch] = useReducer(reducer, initialState);
+  const { form, setName, setText, setRating, clear } = useForm();
 
   const { name, text, rating } = form;
 
   return (
-    <form onSubmit={e => {e.preventDefault();}}>
+    <form onSubmit={e => { e.preventDefault(); }}>
       <div>
-        <input type="text" placeholder="Имя" value={name} onChange={e => {
-          dispatch({ type: SET_NAME_ACTION, payload: e.target.value })
-        }} />
+        <input type="text" placeholder="Имя" value={name} onChange={e => { setName(e.target.value) }} />
       </div>
       <div>
-        <textarea placeholder="Текст" value={text} onChange={e => {
-          dispatch({ type: SET_TEXT_ACTION, payload: e.target.value })
-        }} />
+        <textarea placeholder="Текст" value={text} onChange={e => { setText(e.target.value) }} />
       </div>
       <div>
-        Рейтинг: <Counter max="5" value={rating} onChange={value => {
-          dispatch({ type: SET_RATING_ACTION, payload: value })
-        }} />
+        Рейтинг: <Counter max="5" value={rating} onChange={value => { setRating(value) }} />
       </div>
-      <button type="button" onClick={() => {
-        dispatch({ type: CLEAR_ACTION })
-      }}>clear</button>
+      <Button type="button" onClick={clear} buttonType="clear">clear</Button>
     </form>
   );
 }
