@@ -1,18 +1,31 @@
 .button {
 	padding: 5px 10px;
 	border-radius: 4px;
-	background-color: #eef;
 	border: none;
 	cursor: pointer;
 }
 
+.light {
+	background-color: #eef;
+}
+
+.dark {
+	background-color: #338;
+	color: #fff;
+}
+
 .active {
 	pointer-events: none;
+}
+
+.light.active,
+.light.button:hover {
 	background-color: #88f;
 }
 
-.button:hover {
-	background-color: #88f;
+.dark.active,
+.dark.button:hover {
+	background-color: #000;
 }
 
 .tab {

@@ -1,8 +1,11 @@
 import { DishListItem } from "../Dish/DishListItem";
 import { ReviewForm } from "../ReviewForm/ReviewForm";
 import { ReviewListItem } from "../Review/Review";
+import { useUser } from "../UserContext/useUser";
 
 export const Restaurant = ({ restaurant }) => {
+  const { user } = useUser();
+
   return (
     <div style={{ backgroundColor: '#f4f4f4', padding: '10px' }}>
       <h2>{restaurant.name}</h2>
@@ -24,8 +27,13 @@ export const Restaurant = ({ restaurant }) => {
         <div>Отзывов еще нет</div>
       }
 
-      <h3>Оставить отзыв</h3>
-      <ReviewForm />
+      {
+        user &&
+        <>
+          <h3>Оставить отзыв</h3>
+          <ReviewForm />
+        </>
+      }
 
     </div>
   );

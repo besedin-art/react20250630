@@ -1,6 +1,6 @@
 import { Counter } from "../Counter/Counter";
 import { Button } from "../Button/Button";
-import { useForm } from "./use-form";
+import { useForm } from "./useForm";
 
 
 export const ReviewForm = () => {
