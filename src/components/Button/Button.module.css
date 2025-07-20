@@ -1,0 +1,32 @@
+.button {
+	padding: 5px 10px;
+	border-radius: 4px;
+	background-color: #eef;
+	border: none;
+	cursor: pointer;
+}
+
+.active {
+	pointer-events: none;
+	background-color: #88f;
+}
+
+.button:hover {
+	background-color: #88f;
+}
+
+.tab {
+	margin: 2px;
+}
+
+.clear {
+	background-color: #f88;
+}
+
+.l {
+	padding: 10px 25px;
+}
+
+.s {
+	padding: 2px 5px;
+}
