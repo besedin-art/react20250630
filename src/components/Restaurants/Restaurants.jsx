@@ -1,6 +1,6 @@
 import { Restaurant } from "../Restaurant/Restaurant";
 import { useState } from "react";
-import { Button } from "../Button/Button";
+import { TabItem } from "../TabItem/TabItem";
 
 export const Restaurants = ({ restaurants }) => {
   const [current, setCurrent] = useState(restaurants[0].id);
@@ -11,15 +11,13 @@ export const Restaurants = ({ restaurants }) => {
     <>
       <div>
         {restaurants.map(({ id, name }) => (
-          <Button
+          <TabItem
             key={id}
-            buttonType="tab"
-            size="large"
             isActive={id === current}
             onClick={() => setCurrent(id)}
           >
             {name}
-          </Button>)
+          </TabItem>)
         )}
       </div>
       <div>
