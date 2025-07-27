@@ -1,27 +1,28 @@
-import { Restaurant } from "../Restaurant/Restaurant";
+import { useSelector } from "react-redux";
 import { useState } from "react";
+import { Restaurant } from "../Restaurant/Restaurant";
 import { TabItem } from "../TabItem/TabItem";
+import { selectRestaurantsIds } from "../../redux/entities/restaurants/slice";
+import { RestaurantTabContainer } from "../RestaurantTab/RestaurantTabContainer";
+import { RestaurantContainer } from "../Restaurant/RestaurantContainer";
 
-export const Restaurants = ({ restaurants }) => {
-  const [current, setCurrent] = useState(restaurants[0].id);
-
-  const activeRestaurant = restaurants.find(restaurant => restaurant.id === current);
+export const Restaurants = () => {
+  const restaurantsIds = useSelector(selectRestaurantsIds)
+  const [currentRestaurantId, setCurrentRestaurantId] = useState(restaurantsIds?.[0]);
 
   return (
     <>
       <div>
-        {restaurants.map(({ id, name }) => (
-          <TabItem
+        {restaurantsIds?.map((id) => (
+          <RestaurantTabContainer
             key={id}
-            isActive={id === current}
-            onClick={() => setCurrent(id)}
-          >
-            {name}
-          </TabItem>)
-        )}
+            id={id}
+            isActive={id === currentRestaurantId}
+            onClick={() => setCurrentRestaurantId(id)} />
+        ))}
       </div>
       <div>
-        {<Restaurant restaurant={activeRestaurant} key={activeRestaurant.id} />}
+        {currentRestaurantId && <RestaurantContainer id={currentRestaurantId} />}
       </div>
       <div style={{ height: "1000px" }}></div>
     </>

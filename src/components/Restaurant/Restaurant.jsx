@@ -1,29 +1,31 @@
-import { DishListItem } from "../Dish/DishListItem";
 import { ReviewForm } from "../ReviewForm/ReviewForm";
-import { ReviewListItem } from "../Review/Review";
 import { useUser } from "../UserContext/useUser";
+import { DishListItemContainer } from "../Dish/DishListItemContainer";
+import { ReviewListItemContainer } from "../Review/ReviewListItemContainer";
 
-export const Restaurant = ({ restaurant }) => {
+export const Restaurant = ({ id, name, menuIds, reviewsIds }) => {
   const { user } = useUser();
 
   return (
     <div style={{ backgroundColor: '#f4f4f4', padding: '10px' }}>
-      <h2>{restaurant.name}</h2>
+      <h2>{name}</h2>
       <h3>Меню</h3>
       <ul>
-        {restaurant.menu.map(dish => (
-          <DishListItem dish={dish} key={dish.id} />
-        ))}
+        {!!menuIds.length &&
+          menuIds.map(id => (
+            <DishListItemContainer id={id} key={id} />
+          ))
+        }
       </ul>
       <h3>Отзывы</h3>
       {
-        !!restaurant.reviews.length &&
-        restaurant.reviews.map(review => (
-          <ReviewListItem key={review.id} review={review} />
+        !!reviewsIds.length &&
+        reviewsIds.map(id => (
+          <ReviewListItemContainer id={id} key={id} />
         ))
       }
       {
-        !restaurant.reviews.length &&
+        !reviewsIds.length &&
         <div>Отзывов еще нет</div>
       }
 
