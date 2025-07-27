@@ -1,6 +1,7 @@
 import styles from './Layout.module.css';
 import { ToggleThemeButton } from '../ToggleThemeButton/ToggleThemeButton';
 import { UserBlock } from '../UserBlock/UserBlock';
+import { Cart } from '../Cart/Cart';
 
 export const Layout = ({ children }) => {
   return (
@@ -9,6 +10,7 @@ export const Layout = ({ children }) => {
         header
         <ToggleThemeButton />
         <UserBlock />
+        <Cart />
       </header>
       <main>{children}</main>
       <footer className={styles.footer}>footer</footer>
