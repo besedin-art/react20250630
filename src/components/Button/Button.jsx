@@ -1,8 +1,9 @@
 import styles from './Button.module.css'
 import classNames from 'classnames';
 import { useTheme } from '../ThemeContext/useTheme';
+import { Link } from '../Link/Link';
 
-export const Button = ({ size, buttonType = '', isActive, children, ...rest }) => {
+export const Button = ({ size, buttonType = '', isActive, isLink, to, children, ...rest }) => {
   const { theme } = useTheme();
   const buttonClass = classNames(
     styles.button,
@@ -16,6 +17,18 @@ export const Button = ({ size, buttonType = '', isActive, children, ...rest }) =
       [styles.dark]: theme === 'dark',
     }
   );
+
+  if (isLink) {
+    return (
+      <Link
+        to={to}
+        className={buttonClass}
+        {...rest}
+      >
+        {children}
+      </Link>
+    );
+  }
 
   return (
     <button

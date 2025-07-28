@@ -9,9 +9,10 @@ export const RestaurantTabContainer = ({ id, isActive, onClick }) => {
 
   return (
     <TabItem
-      key={id}
+      isLink={true}
+      to={`${id}`}
       isActive={isActive}
-      onClick={onClick}
+    // onClick={onClick}
     >
       {restaurant.name}
     </TabItem>
