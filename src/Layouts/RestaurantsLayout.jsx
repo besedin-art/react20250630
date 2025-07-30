@@ -20,7 +20,6 @@ export const RestaurantsLayout = () => {
       <div>
         <Outlet />
       </div>
-      <div style={{ height: "1000px" }}></div>
     </>
   );
 }
